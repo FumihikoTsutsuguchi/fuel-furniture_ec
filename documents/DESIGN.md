@@ -19,3 +19,5 @@ https://www.figma.com/file/Qipsg882lWIj3yU0J9Ccrj/Fuel-Furniture?type=design&nod
 **[スプレッドシートリンク]**  
 https://docs.google.com/spreadsheets/d/1GZCdJIla0sVkaHIs14hWM-gaEingd-3BMgXkldZGw_k/edit#gid=0
 ### ER図
+**[plantUML]**  
+https://github.com/FumihikoTsutsuguchi/fuel-furniture_ec/blob/main/documents/tables.pu
