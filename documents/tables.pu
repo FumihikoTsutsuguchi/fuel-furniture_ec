@@ -1,0 +1,125 @@
+@startuml fuel_furniture
+' hide the spot
+hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+
+entity "Owner" as Owner {
+  id : bigint
+  --
+  name : integer
+  email : string
+  password : string
+  created_at : timestamp
+  updated_at : timestamp
+  deleted_at : timestamp
+}
+
+entity "Shop" as Shop {
+  id : bigint
+  --
+  owner_id : bigint <<FK>>
+  name : string
+  information : text
+  filename : string
+  is_selling : boolean
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity "Product" as Product {
+  id : bigint
+  --
+  shop_id : bigint <<FK>>
+  name : string
+  information : text
+  price : unsignedInteger
+  is_selling : boolean
+  sort_order : integer
+  secondary_category_id : bigint <<FK>>
+  image1 : bigint <<FK>>
+  image2 : bigint <<FK>>
+  image3 : bigint <<FK>>
+  image4 : bigint <<FK>>
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity "Image" as Image {
+  id : bigint
+  --
+  owner_id : bigint <<FK>>
+  filename : string
+  title : string
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity "PrimaryCategory" as PrimaryCategory {
+  id : bigint
+  --
+  name : string
+  sort_order : integer
+}
+
+entity "SecondaryCategory" as SecondaryCategory {
+  id : bigint
+  --
+  name : string
+  primary_category_id : bigint <<FK>>
+  sort_order : integer
+}
+
+entity "Stock" as Stock {
+  id : bigint
+  --
+  product_id : bigint <<FK>>
+  type : tinyint
+  quantity : integer
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity "User" as User {
+  id : bigint
+  --
+  name : integer
+  email : string
+  password : string
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity "Cart" as Cart {
+  id : bigint
+  --
+  user_id : bigint <<FK>>
+  product_id : bigint <<FK>>
+  quantity : integer
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity "Admin" as Admin {
+  id : bigint
+  --
+  name : integer
+  email : string
+  password : string
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+Owner ||--|| Shop
+Owner ||--|{ Image
+Shop ||--|{ Product
+Product }|--|| Image
+Product ||--o| Stock
+Product }|--o{ Cart
+Product }|--|| SecondaryCategory
+SecondaryCategory }|--|| PrimaryCategory
+User }|--|| Cart
+
+@enduml
