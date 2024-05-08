@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            オーナー 一覧
+            期限切れオーナー 一覧
         </h2>
     </x-slot>
 
@@ -28,29 +28,25 @@
                                                 メールアドレス</th>
                                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 bg-gray-100"
                                                 style="text-align: left">
-                                                作成日</th>
+                                                期限が切れた日</th>
                                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 bg-gray-100"
                                                 style="text-align: left">
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($owners as $owner)
+                                        @foreach ($expiredOwners as $owner)
                                             <tr>
                                                 <td class="px-4 py-3">{{ $owner->name }}</td>
                                                 <td class="px-4 py-3">{{ $owner->email }}</td>
-                                                <td class="px-4 py-3">{{ $owner->created_at->diffForHumans() }}</td>
+                                                <td class="px-4 py-3">{{ $owner->deleted_at->diffForHumans() }}</td>
                                                 <td class="px-4 py-3 text-right">
                                                     <form id="delete_{{ $owner->id }}" method="post" class="flex"
-                                                        action="{{ route('admin.owners.destroy', ['owner' => $owner->id]) }}">
+                                                        action="{{ route('admin.expired-owners.destroy', ['owner' => $owner->id]) }}">
                                                         @csrf
-                                                        @method('delete')
-                                                        <button type="button"
-                                                            onclick="location.href='{{ route('admin.owners.edit', ['owner' => $owner->id]) }}'"
-                                                            class="text-white bg-blue-500 border-0 py-2 px-4 ml-3 focus:outline-none hover:bg-blue-600 rounded text-lg">編集</button>
                                                         <a href="#" data-id="{{ $owner->id }}"
                                                             onclick="deletePost(this)"
-                                                            class="text-white bg-red-400 border-0 py-2 px-4 focus:outline-none hover:bg-red-500 rounded text-lg inline-block ml-1">削除</a>
+                                                            class="text-white bg-red-400 border-0 py-2 px-4 focus:outline-none hover:bg-red-500 rounded text-lg inline-block ml-1">完全に削除</a>
                                                     </form>
                                                 </td>
                                             </tr>
