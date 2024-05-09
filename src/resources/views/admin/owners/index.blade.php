@@ -17,7 +17,7 @@
                                     <button onclick="location.href='{{ route('admin.owners.create') }}'"
                                         class="text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">新規登録</button>
                                 </div>
-                                <table class="table-auto w-full whitespace-no-wrap">
+                                <table class="table-auto w-full whitespace-no-wrap mb-8">
                                     <thead>
                                         <tr>
                                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 bg-gray-100 rounded-tl rounded-bl"
@@ -57,6 +57,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{ $owners->links() }}
                             </div>
                         </div>
                     </section>

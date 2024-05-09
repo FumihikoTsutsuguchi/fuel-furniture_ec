@@ -13,10 +13,6 @@
                         <div class="container px-5 py-2 mx-auto">
                             <x-flash-message status="session('status')" />
                             <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-                                <div class="mb-4">
-                                    <button onclick="location.href='{{ route('admin.owners.create') }}'"
-                                        class="text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">新規登録</button>
-                                </div>
                                 <table class="table-auto w-full whitespace-no-wrap">
                                     <thead>
                                         <tr>
