@@ -51,6 +51,12 @@
                                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                                         </div>
                                     </div>
+                                    <div class="p-2">
+                                        <div class="relative">
+                                            <p class="leading-7 text-sm text-gray-600">店名</p>
+                                            <p class="bg-gray-100 py-2 px-3 rounded">{{ $owner->shop->name }}</p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="mt-8 text-center">
                                     <button type="button" onclick="location.href='{{ route('admin.owners.index') }}'" class="bg-gray-200 border-0 py-2 px-8 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
