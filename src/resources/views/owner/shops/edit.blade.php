@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <div class="p-2 w-1/2">
-                                <x-shop-thumbnail :filename="$shop->filename"/>
+                                <x-thumbnail :filename="$shop->filename" type="shops"/>
                             </div>
                             <div class="p-2">
                                 <div class="relative flex">
