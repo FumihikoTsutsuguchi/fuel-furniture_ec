@@ -9,8 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    <x-flash-message status="session('status')" />
                     <form method="post" action="{{ route('owner.products.update', ['product' => $product->id]) }}">
                         @csrf
+                        @method('put')
                         <div class="lg:w-1/2 md:w-2/3 mx-auto">
                             <div class="p-2">
                                 <div class="relative">
@@ -59,7 +61,7 @@
                             <div class="p-2">
                                 <div class="relative">
                                     <label for="price" class="leading-7 text-sm text-black">価格 ※必須</label>
-                                    <input type="number" id="price" name="price" value="{{ $product->price }}"
+                                    <input type="number" id="price" name="price" value="{{ $product->price }}" min="0"
                                         requierd
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                     <x-input-error :messages="$errors->get('price')" class="mt-2" />
@@ -71,6 +73,7 @@
                                     <input type="number" id="quantity" name="quantity"
                                         value="0" min="0"
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <x-input-error :messages="$errors->get('quantity')" class="mt-2" />
                                 </div>
                             </div>
                             <div class="p-2">
