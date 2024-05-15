@@ -11,6 +11,9 @@
     if ($name === 'image4') {
         $modal = 'modal-4';
     }
+
+    $cImage = $currentImage ?? '' ;
+    $cId = $currentId ?? '' ;
 @endphp
 
 <div class="modal micromodal-slide" id="{{ $modal }}" aria-hidden="true">
@@ -48,7 +51,7 @@
 <div class="flex justify-between items-center mb-5 mt-2 px-2">
     <a class="py-2 px-4 bg-gray-300 rounded" data-micromodal-trigger="{{ $modal }}" href='javascript:;'>画像ファイル選択</a>
     <div class="w-1/4">
-        <img id="{{ $name }}_thumbnail" src="">
+        <img id="{{ $name }}_thumbnail" src="{{ $cImage ? asset('storage/products/' . $cImage) : '' }}">
     </div>
 </div>
-<input id="{{ $name }}_hidden" type="hidden" name="{{ $name }}" value="">
+<input id="{{ $name }}_hidden" type="hidden" name="{{ $name }}" value="{{ $cId }}">

@@ -33,8 +33,8 @@
                             </div>
                             <div class="p-2">
                                 <div class="relative flex">
-                                    <div class="mr-5"><input type="radio" name="is_selling" value="1" class="mr-1" {{ $shop->is_selling ? 'checked' : ''}}>販売中</div>
-                                    <div><input type="radio" name="is_selling" value="0" class="mr-1" {{ $shop->is_selling ? '' : 'checked'}}>停止中</div>
+                                    <div class="mr-5"><input type="radio" name="is_selling" value="1" class="mr-1" {{ $shop->is_selling === 1 ? 'checked' : ''}}>販売中</div>
+                                    <div><input type="radio" name="is_selling" value="0" class="mr-1" {{ $shop->is_selling === 0 ? 'checked' : ''}}>停止中</div>
                                 </div>
                             </div>
                             <div class="p-2">
