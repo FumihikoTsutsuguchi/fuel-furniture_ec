@@ -14,7 +14,7 @@
 @endphp
 
 <div class="modal micromodal-slide" id="{{ $modal }}" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal__overlay z-50" tabindex="-1" data-micromodal-close>
         <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="{{ $modal }}-title">
             <header class="modal__header">
                 <h2 class="text-xl text-gray-700" id="{{ $modal }}-title">
@@ -45,8 +45,8 @@
 </div>
 
 
-<div class="flex justify-around items-center mb-4">
-    <a data-micromodal-trigger="{{ $modal }}" href='javascript:;'>開くボタン</a>
+<div class="flex justify-between items-center mb-5 mt-2 px-2">
+    <a class="py-2 px-4 bg-gray-300 rounded" data-micromodal-trigger="{{ $modal }}" href='javascript:;'>画像ファイル選択</a>
     <div class="w-1/4">
         <img id="{{ $name }}_thumbnail" src="">
     </div>
