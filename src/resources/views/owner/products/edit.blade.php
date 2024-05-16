@@ -79,10 +79,10 @@
                             <div class="p-2">
                                 <div class="relative flex">
                                     <div class="mr-5">
-                                        <input type="radio" name="type" value="1" class="mr-1" checked>追加
+                                        <input type="radio" name="type" value="{{ \Constant::PRODUCT_LIST['add'] }}" class="mr-1" checked>追加
                                     </div>
                                     <div>
-                                        <input type="radio" name="type" value="2" class="mr-1">削減
+                                        <input type="radio" name="type" value="{{ \Constant::PRODUCT_LIST['reduce'] }}" class="mr-1">削減
                                     </div>
                                 </div>
                             </div>
