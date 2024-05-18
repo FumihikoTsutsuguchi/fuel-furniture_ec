@@ -23,15 +23,16 @@
                                     <span class="title-font font-medium text-2xl text-gray-900">{{ number_format($product->price) }}</span><span class="text-sm">円(税込)</span>
                                 </div>
                                 <div class="flex items-center">
-                                    <span class="mr-3">数量</span>
                                     <div class="relative">
-                                        <select
+                                        {{-- <select name="quantity" type="number"
                                             class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 text-base pl-3 pr-10">
                                             <option>SM</option>
                                             <option>M</option>
                                             <option>L</option>
                                             <option>XL</option>
-                                        </select>
+                                        </select> --}}
+                                        <label for="quantity">数量</label>
+                                        <input type="number" name="quantity" id="quantity" class="rounded border appearance-none border-gray-300" value="0" min="0">
                                     </div>
                                     <button
                                         class="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded ml-4">カートに入れる</button>
