@@ -50,27 +50,41 @@ class CartController extends Controller
 
     public function checkout()
     {
+
         $user = User::findOrFail(Auth::id());
         $products = $user->products;
 
         $lineItems = [];
+
+        // dd($products);
+
         foreach($products as $product){
             $quantity = '';
-            $quantity = Stock::where('product_id',$product->id)->sum('quantity');
+            $quantity = Stock::where('product_id', $product->id)->sum('quantity');
+            // dd($products, $quantity);
 
             if($product->pivot->quantity > $quantity ){
                 return redirect()->route('user.cart.index');
             } else {
-                $lineItem = [
-                    'name' => $product->name,
-                    'description' => $product->information,
-                    'amount' => $product->price,
+                $priceData = [
                     'currency' => 'jpy',
+                    'unit_amount' => $product->price,
+                    'product_data' => [
+                        'name' => $product->name,
+                        'description' => $product->information,
+                    ],
+                ];
+
+                $lineItem = [
+                    'price_data' => $priceData,
                     'quantity' => $product->pivot->quantity,
                 ];
-                array_push($lineItems, $lineItem);
+                $lineItems[] = $lineItem;
+
             }
         }
+
+        // dd($lineItems);
 
         foreach ($products as $product) {
             Stock::create([
@@ -80,12 +94,11 @@ class CartController extends Controller
             ]);
         }
 
-        dd('test');
-
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
         $session = \Stripe\Checkout\Session::create([
-            'line_items' => [$lineItems],
+            'line_items' => $lineItems,
+            'mode' => 'payment',
             'success_url' => route('user.items.index'),
             'cancel_url' => route('user.cart.index'),
         ]);
