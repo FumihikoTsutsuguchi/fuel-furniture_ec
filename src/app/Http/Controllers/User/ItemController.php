@@ -34,6 +34,7 @@ class ItemController extends Controller
         ,'products.sort_order as sort_order'
         ,'products.information', 'secondary_categories.name as category'
         ,'image1.filename as filename')
+        ->where('products.is_selling', 1)
         ->get();
 
         return view('user.index', compact('products'));
