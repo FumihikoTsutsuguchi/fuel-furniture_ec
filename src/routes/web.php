@@ -16,10 +16,6 @@ use App\Http\Controllers\User\CartController;
 |
 */
 
-if (env('APP_ENV') == 'production') {
-    \Illuminate\Support\Facades\URL::forceScheme('https');
-}
-
 Route::get('/', function () {
     return view('user.welcome');
 });
