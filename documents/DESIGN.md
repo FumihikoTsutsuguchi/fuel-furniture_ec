@@ -17,4 +17,4 @@
 ### ER図
 **[plantUMLファイルリンク](https://github.com/FumihikoTsutsuguchi/fuel-furniture_ec/blob/main/documents/tables.pu)**  
 ## インフラ構成図
-![aws drawio](https://github.com/FumihikoTsutsuguchi/fuel-furniture_ec/assets/115400802/4b2438a9-4f5a-4a60-9a04-e22e4cca8913)
+![aws drawio (1)](https://github.com/FumihikoTsutsuguchi/fuel-furniture_ec/assets/115400802/90b83b0e-0ba4-4db7-8386-eca373c0af98)
