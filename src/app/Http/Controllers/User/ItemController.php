@@ -36,10 +36,6 @@ class ItemController extends Controller
 
     public function index(Request $request)
     {
-        // Mail::to('test@test.com')
-        // ->send(new TestMail());
-
-        // SendThanksMail::dispatch(); 
 
         $products = Product::availableItems()
         ->selectCategory($request->category ?? '0')
