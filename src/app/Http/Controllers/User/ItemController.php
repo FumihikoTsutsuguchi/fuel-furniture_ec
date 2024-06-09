@@ -8,6 +8,10 @@ use App\Models\Product;
 use App\Models\Stock;
 use Illuminate\Support\Facades\DB;
 use Closure;
+use App\Models\PrimaryCategory;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
+use App\Jobs\SendThanksMail;
 
 class ItemController extends Controller
 {
@@ -32,8 +36,21 @@ class ItemController extends Controller
 
     public function index(Request $request)
     {
-        $products = Product::availableItems()->sortOrder($request->sort)->get();
-        return view('user.index', compact('products'));
+        // Mail::to('test@test.com')
+        // ->send(new TestMail());
+
+        // SendThanksMail::dispatch(); 
+
+        $products = Product::availableItems()
+        ->selectCategory($request->category ?? '0')
+        ->searchKeyword($request->keyword)
+        ->sortOrder($request->sort)
+        ->paginate($request->pagination ?? '20');
+
+        $categories = PrimaryCategory::with('secondary')
+        ->get();
+
+        return view('user.index', compact('products', 'categories'));
     }
 
     public function show($id)
