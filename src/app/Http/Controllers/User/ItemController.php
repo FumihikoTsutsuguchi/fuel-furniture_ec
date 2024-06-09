@@ -39,7 +39,7 @@ class ItemController extends Controller
         // Mail::to('test@test.com')
         // ->send(new TestMail());
 
-        SendThanksMail::dispatch(); 
+        // SendThanksMail::dispatch(); 
 
         $products = Product::availableItems()
         ->selectCategory($request->category ?? '0')
