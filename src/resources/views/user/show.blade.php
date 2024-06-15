@@ -11,23 +11,34 @@
                 <div class="p-6 text-gray-900">
                     <div class="md:flex md:justify-around">
                         <div class="md:w-1/2">
-
-                            <div class="swiper">
+                            <div class="swiper slider">
                                 <div class="swiper-wrapper">
                                     @foreach ([$product->imageFirst, $product->imageSecond, $product->imageThird, $product->imageFourth] as $image)
                                         @if ($image && $image->filename !== null)
                                             <div class="swiper-slide">
-                                                <img src="{{ asset('https://cf.fuel-furniture.com/products/' . $image->filename) }}" alt="">
+                                                <img src="{{ asset('https://cf.fuel-furniture.com/products/' . $image->filename) }}"
+                                                    alt="">
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+
+                            </div>
+                            <div class="swiper slider-thumbnail">
+                                <div class="swiper-wrapper">
+                                    @foreach ([$product->imageFirst, $product->imageSecond, $product->imageThird, $product->imageFourth] as $image)
+                                        @if ($image && $image->filename !== null)
+                                            <div class="swiper-slide">
+                                                <img src="{{ asset('https://cf.fuel-furniture.com/products/' . $image->filename) }}"
+                                                    alt="">
                                             </div>
                                         @endif
                                     @endforeach
                                 </div>
                                 <div class="swiper-pagination"></div>
-                                <div class="swiper-button-prev"></div>
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-scrollbar"></div>
                             </div>
-
                         </div>
                         <div class="md:w-1/2 ml-4">
                             <h2 class="text-sm title-font text-gray-500 tracking-widest">{{ $product->category->name }}
