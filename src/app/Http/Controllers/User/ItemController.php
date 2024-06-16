@@ -17,7 +17,6 @@ class ItemController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:users');
 
         $this->middleware(function (Request $request, Closure $next) {
 

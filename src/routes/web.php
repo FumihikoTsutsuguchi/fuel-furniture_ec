@@ -16,14 +16,8 @@ use App\Http\Controllers\User\CartController;
 |
 */
 
-Route::get('/', function () {
-    return view('user.welcome');
-});
-
-Route::middleware('auth:users')->group(function(){
-    Route::get('/', [ItemController::class, 'index'])->name('items.index');
-    Route::get('show/{item}', [ItemController::class, 'show'])->name('items.show');
-});
+Route::get('/', [ItemController::class, 'index'])->name('items.index');
+Route::get('show/{item}', [ItemController::class, 'show'])->name('items.show');
 
 Route::prefix('cart')->middleware('auth:users')->group(function(){
     Route::get('/', [CartController::class, 'index'])->name('cart.index');
@@ -33,14 +27,6 @@ Route::prefix('cart')->middleware('auth:users')->group(function(){
     Route::get('success', [CartController::class,'success'])->name('cart.success');
     Route::get('cancel', [CartController::class,'cancel'])->name('cart.cancel');
 });
-
-// Route::prefix('cart')->middleware('auth:users')->group(function(){
-//     Route::get('checkout', [CartController::class,'checkout'])->name('cart.checkout');
-// });
-
-// Route::get('/dashboard', function () {
-//     return view('user.dashboard');
-// })->middleware(['auth:users', 'verified'])->name('dashboard');
 
 Route::middleware('auth:users')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
