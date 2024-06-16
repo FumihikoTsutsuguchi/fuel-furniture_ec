@@ -26,7 +26,6 @@ class Authenticate extends Middleware
             } else {
                 return route($this->user_route);
             }
-
         }
     }
 }
