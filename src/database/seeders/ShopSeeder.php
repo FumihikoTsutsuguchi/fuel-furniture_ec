@@ -21,13 +21,6 @@ class ShopSeeder extends Seeder
                 'filename' => '',
                 'is_selling' => true,
             ],
-            [
-                'owner_id' => 2,
-                'name' => 'ここに店名',
-                'information' => 'ここにお店の情報。ここにお店の情報。',
-                'filename' => '',
-                'is_selling' => true,
-            ],
         ]);
     }
 }
