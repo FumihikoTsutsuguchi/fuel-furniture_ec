@@ -18,7 +18,7 @@ class ImageService
         $fileName = uniqid(rand().'_');
         $extension = $file->extension();
         $fileNameToStore = $fileName. '.' . $extension;
-        $resizedImage = InterventionImage::make($file)->resize(1920, 1080)->encode();
+        $resizedImage = InterventionImage::make($file)->encode();
         Storage::disk('s3')->put( $folderName . '/' . $fileNameToStore, $resizedImage );
 
         return $fileNameToStore;

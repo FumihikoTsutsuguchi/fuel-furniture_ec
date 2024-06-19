@@ -1,110 +1,92 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            商品一覧
-        </h2>
+    <div class="swiper swiper__mv">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="{{ asset('/images/desk_03.JPG') }}" alt=""></div>
+            <div class="swiper-slide"><img src="{{ asset('/images/desk_01.JPG') }}" alt=""></div>
+            <div class="swiper-slide"><img src="{{ asset('/images/desk_03.JPG') }}" alt=""></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+
+    <div class="p-front c-wrapper">
         <form action="{{ route('user.items.index') }}" method="get">
-            <div class="lg:flex lg:justify-around">
-                <div class="lg:flex items-center">
-                    <select name="category" class="mb-2 lg:mb-0 lg:mr-2">
-                        <option value="0" {{ \Request::get('category') === '0' ? 'selected' : '' }}>全て</option>
+            <div class="c-search">
+                <div class="c-search__keyword">
+                    <select name="category">
+                        <option value="0" {{ \Request::get('category') === '0' ? 'selected' : '' }}>カテゴリー</option>
                         @foreach ($categories as $category)
                             <optgroup label="{{ $category->name }}">
                                 @foreach ($category->secondary as $secondary)
-                                    <option value="{{ $secondary->id }}" {{ \Request::get('category') == $secondary->id ? 'selected' : '' }}>
+                                    <option value="{{ $secondary->id }}"
+                                        {{ \Request::get('category') == $secondary->id ? 'selected' : '' }}>
                                         {{ $secondary->name }}
                                     </option>
                                 @endforeach
                         @endforeach
                     </select>
-                    <div class="flex mb-2 lg:mb-0 items-center">
-                        <div><input name="keyword" class="border border-gray-500 py-2" placeholder="キーワードを入力"></div>
-                        <div><button class="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded ml-4">検索する</button></div>
+                    <div class="c-search__input">
+                        <input name="keyword" class="" placeholder="キーワードを入力">
+                        <button class="c-button">検索する</button>
                     </div>
                 </div>
-                <div class="flex">
+                <div class="c-search__sort">
                     <div>
-                        <span>表示順</span>
-                        <select id="sort" name="sort" class="mr-4">
-                            <option value="{{ \Constant::SORT_ORDER['recommend']}}"
-                                @if(\Request::get('sort') === \Constant::SORT_ORDER['recommend'] )
-                                selected
-                                @endif>おすすめ順
+                        <select id="sort" name="sort" class="">
+                            <option value="">表示順</option>
+                            <option value="{{ \Constant::SORT_ORDER['recommend'] }}"
+                                @if (\Request::get('sort') === \Constant::SORT_ORDER['recommend']) selected @endif>おすすめ順
                             </option>
-                            <option value="{{ \Constant::SORT_ORDER['higherPrice']}}"
-                                @if(\Request::get('sort') === \Constant::SORT_ORDER['higherPrice'] )
-                                selected
-                                @endif>料金の高い順
+                            <option value="{{ \Constant::SORT_ORDER['higherPrice'] }}"
+                                @if (\Request::get('sort') === \Constant::SORT_ORDER['higherPrice']) selected @endif>料金の高い順
                             </option>
-                            <option value="{{ \Constant::SORT_ORDER['lowerPrice']}}"
-                                @if(\Request::get('sort') === \Constant::SORT_ORDER['lowerPrice'] )
-                                selected
-                                @endif>料金の安い順
+                            <option value="{{ \Constant::SORT_ORDER['lowerPrice'] }}"
+                                @if (\Request::get('sort') === \Constant::SORT_ORDER['lowerPrice']) selected @endif>料金の安い順
                             </option>
-                            <option value="{{ \Constant::SORT_ORDER['later']}}"
-                                @if(\Request::get('sort') === \Constant::SORT_ORDER['later'] )
-                                selected
-                                @endif>新しい順
+                            <option value="{{ \Constant::SORT_ORDER['later'] }}"
+                                @if (\Request::get('sort') === \Constant::SORT_ORDER['later']) selected @endif>新しい順
                             </option>
-                            <option value="{{ \Constant::SORT_ORDER['older']}}"
-                                @if(\Request::get('sort') === \Constant::SORT_ORDER['older'] )
-                                selected
-                                @endif>古い順
+                            <option value="{{ \Constant::SORT_ORDER['older'] }}"
+                                @if (\Request::get('sort') === \Constant::SORT_ORDER['older']) selected @endif>古い順
                             </option>
                         </select>
                     </div>
                     <div>
-                        <span>表示件数</span>
                         <select id="pagination" name="pagination">
-                            <option value="20"
-                                @if(\Request::get('pagination') === '20')
-                                selected
-                                @endif>20件
+                            <option value="">表示件数</option>
+                            <option value="20" @if (\Request::get('pagination') === '20') selected @endif>20件
                             </option>
-                            <option value="50"
-                                @if(\Request::get('pagination') === '50')
-                                selected
-                                @endif>50件
+                            <option value="50" @if (\Request::get('pagination') === '50') selected @endif>50件
                             </option>
-                            <option value="100"
-                                @if(\Request::get('pagination') === '100')
-                                selected
-                                @endif>100件
+                            <option value="100" @if (\Request::get('pagination') === '100') selected @endif>100件
                             </option>
                         </select>
                     </div>
                 </div>
             </div>
         </form>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <div class="flex flex-wrap">
-                        @foreach ($products as $product)
-                            <div class="w-1/4 p-2 md:p-4">
-                                <a href="{{ route('user.items.show', ['item' => $product->id]) }}">
-                                    <div class="border rounded-md p-2 md:p-4">
-                                        <x-thumbnail filename="{{ $product->filename ?? ''}}" type="products" />
-                                        <div class="mt-4">
-                                            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->category }}</h3>
-                                            <h2 class="text-gray-900 title-font text-lg font-medium">{{ $product->name }}</h2>
-                                            <p class="mt-1">{{ number_format($product->price) }}<span class="text-sm">円(税込)</span></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        @endforeach
+        <div class="p-front__product">
+            @foreach ($products as $product)
+                <a class="p-front__product-unit" href="{{ route('user.items.show', ['item' => $product->id]) }}">
+                    <x-thumbnail filename="{{ $product->filename ?? '' }}" type="products" />
+                    <div class="p-front__product-unit-meta">
+                        <p class="p-front__product-unit-meta-category">
+                            {{ $product->category }}</p>
+                        <p class="p-front__product-unit-name">
+                            {{ $product->name }}</p>
+                        <p class="p-front__product-unit-price">{{ number_format($product->price) }}<span
+                                class="text-sm">円(税込)</span>
+                        </p>
                     </div>
-                    {{ $products->appends([
-                        'sort' => \Request::get('sort'),
-                        'pagination' => \Request::get('pagination')
-                    ])->links() }}
-                </div>
-            </div>
+                </a>
+            @endforeach
+
+
         </div>
+        {{ $products->appends([
+            'sort' => \Request::get('sort'),
+            'pagination' => \Request::get('pagination'),
+        ])->links() }}
     </div>
     <script>
         const select = document.getElementById('sort');

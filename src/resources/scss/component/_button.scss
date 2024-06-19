@@ -1,1 +1,23 @@
 @use "../global" as *;
+
+.c-button {
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+    max-width: 120px;
+    color: $white;
+    font-weight: 400;
+    font-size: 15px;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: $black;
+    @include mq(sp) {
+        padding: 0 10px;
+        font-size: 14px;
+    }
+    @include mq(sp_s) {
+        max-width: 80px;
+        padding: 0 3px;
+        font-size: 14px;
+    }
+}
