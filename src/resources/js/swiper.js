@@ -1,7 +1,6 @@
 import Swiper from "swiper/bundle";
 import "swiper/css/bundle";
 
-
 const swiper = new Swiper(".slider-thumbnail", {
     spaceBetween: 10,
     slidesPerView: 4,
@@ -22,5 +21,12 @@ const swiper2 = new Swiper(".slider", {
     },
     thumbs: {
         swiper: swiper,
+    },
+});
+
+const swiperMv = new Swiper(".swiper__mv", {
+    pagination: {
+        el: ".swiper-pagination",
+        dynamicBullets: true,
     },
 });
