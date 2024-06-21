@@ -74,8 +74,7 @@
                             {{ $product->category }}</p>
                         <p class="p-front__product-unit-name">
                             {{ $product->name }}</p>
-                        <p class="p-front__product-unit-price">{{ number_format($product->price) }}<span
-                                class="text-sm">円(税込)</span>
+                        <p class="p-front__product-unit-price">{{ number_format($product->price) }}円<span class="text-sm">[税込]</span>
                         </p>
                     </div>
                 </a>

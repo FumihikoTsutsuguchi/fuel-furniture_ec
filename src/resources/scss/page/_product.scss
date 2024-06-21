@@ -1,0 +1,67 @@
+@use "../global" as *;
+
+
+.p-product {
+    margin-top: 80px;
+    display: flex;
+    gap: 30px;
+    & * {
+        min-height: 0; //swiperのバグ防止
+        min-width : 0; //swiperのバグ防止
+    }
+
+    @include mq(sp) {
+        display: block;
+    }
+}
+
+.p-product__img {
+    flex: 1;
+}
+
+.p-product__meta {
+    flex: 1;
+}
+
+.p-product__meta-category {
+    margin: 15px 0 10px;
+    font-size: 13px;
+}
+
+.p-product__meta-heading {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.p-product__meta-text {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.p-product__meta-send {
+
+}
+
+.p-product__meta-send-price {
+    margin-bottom: 15px;
+    p {
+        font-size: 24px;
+        display: inline-block;
+    }
+    span {
+        font-size: 15px;
+    }
+}
+
+.p-product__meta-send-volume {
+    display: flex;
+    align-items: center;
+}
+
+.p-product__meta-send-volume-input {
+    display: inline-block;
+    margin-right: 10px;
+    input {
+        max-width: 80px;
+    }
+}
