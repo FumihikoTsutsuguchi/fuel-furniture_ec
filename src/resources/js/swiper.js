@@ -1,14 +1,14 @@
 import Swiper from "swiper/bundle";
 import "swiper/css/bundle";
 
-const swiper = new Swiper(".slider-thumbnail", {
+const swiper = new Swiper(".product-slider__thumbnail", {
     spaceBetween: 10,
     slidesPerView: 4,
     freeMode: true,
     watchSlidesProgress: true,
 });
 
-const swiper2 = new Swiper(".slider", {
+const swiper2 = new Swiper(".product-slider", {
     loop: true,
     spaceBetween: 10,
     pagination: {
