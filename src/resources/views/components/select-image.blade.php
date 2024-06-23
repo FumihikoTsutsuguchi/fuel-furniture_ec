@@ -12,8 +12,8 @@
         $modal = 'modal-4';
     }
 
-    $cImage = $currentImage ?? '' ;
-    $cId = $currentId ?? '' ;
+    $cImage = $currentImage ?? '';
+    $cId = $currentId ?? '';
 @endphp
 
 <div class="modal micromodal-slide" id="{{ $modal }}" aria-hidden="true">
@@ -29,7 +29,7 @@
                 <div class="flex flex-wrap">
                     @foreach ($images as $image)
                         <div class="w-1/4 p-2 md:p-4">
-                            <div class="border rounded-md p-2 md:p-4">
+                            <div class="c-product-image">
                                 <img class="image" data-id="{{ $name }}_{{ $image->id }}"
                                     data-file="{{ $image->filename }}" data-path="{{ asset('storage/products/') }}"
                                     data-modal="{{ $modal }}"
@@ -50,7 +50,7 @@
 
 <div class="flex justify-between items-center mb-5 mt-2 px-2">
     <a class="py-2 px-4 bg-gray-300 rounded" data-micromodal-trigger="{{ $modal }}" href='javascript:;'>画像ファイル選択</a>
-    <div class="w-1/4">
+    <div class="{{ $cImage ? 'c-product-image' : '' }}">
         <img id="{{ $name }}_thumbnail" src="{{ $cImage ? asset('https://cf.fuel-furniture.com/products/' . $cImage) : '' }}">
     </div>
 </div>
