@@ -45,16 +45,17 @@
 }
 
 .swiper__mv {
-    width: 100%;
-    height: 100%;
     & .swiper-slide {
-        // max-height: 50vh;
-        // min-height: 50vh;
-        max-height: 80vh;
         img {
+            min-height: 80vh;
+            max-height: 80vh;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            @include mq(sp) {
+                min-height: 40vh;
+                max-height: 40vh;
+            }
         }
     }
 }

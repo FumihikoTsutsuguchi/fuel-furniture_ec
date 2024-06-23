@@ -1,12 +1,14 @@
 @use "../global" as *;
 
-.c-thumbnail {
-    aspect-ratio: 1/1;
-    max-width: 400px;
+.c-logo {
+    aspect-ratio: 925/442;
+    max-width: 110px;
+    @include mq(sp) {
+        max-width: 80px;
+    }
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center;
     }
 }

@@ -121,6 +121,7 @@
 
                 document.getElementById(imageName + '_thumbnail').src = imagePath + imageFile
                 document.getElementById(imageName + '_hidden').value = imageId
+                document.getElementById(imageName + '_thumbnail').parentElement.classList.add('c-product-image');
                 MicroModal.close(modal);
             })
         })
