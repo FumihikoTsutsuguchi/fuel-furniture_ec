@@ -43,6 +43,7 @@ entity "Product" as Product {
   image2 : bigint <<FK>>
   image3 : bigint <<FK>>
   image4 : bigint <<FK>>
+  shippint_time : unsignedInteger
   created_at : timestamp
   updated_at : timestamp
 }

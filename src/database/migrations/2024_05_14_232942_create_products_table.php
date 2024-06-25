@@ -36,6 +36,7 @@ return new class extends Migration
             $table->foreignId('image4')
             ->nullable()
             ->constrained('images');
+            $table->unsignedInteger('shipping_time');
             $table->timestamps();
         });
     }

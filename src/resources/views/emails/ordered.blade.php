@@ -9,6 +9,9 @@
   </ul>
 
 <div class="mb-4">購入者情報<div>
+
+<p>{{ $user->name }}様</p>
 <ul>
-  <li>{{ $user->name }}様</li>
+    <li>住所(配送先): {{ $user->address }}</li>
+    <li>電話番号: {{ $user->tel }}</li>
 </ul>

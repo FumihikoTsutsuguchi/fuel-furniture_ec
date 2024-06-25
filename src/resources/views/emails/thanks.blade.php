@@ -18,3 +18,10 @@ $total = 0;
 @endforeach
 
 <p>合計金額: {{ number_format($total) }}円</p>
+
+
+<p>お客様情報</p>
+<ul>
+    <li>住所(配送先) :{{ $user->address }}</li>
+    <li>電話番号 :{{ $user->tel }}</li>
+</ul>
