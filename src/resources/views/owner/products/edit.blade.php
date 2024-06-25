@@ -111,6 +111,15 @@
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                             </div>
+                            <div class="p-2 mb-8">
+                                <div class="relative">
+                                    <label for="shipping_time" class="leading-7 text-sm text-black">発送までの期間</label>
+                                    <input type="number" id="shipping_time" name="shipping_time"
+                                        value="{{ $product->shipping_time }}"
+                                        class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                        <span>日</span>
+                                </div>
+                            </div>
 
                             <x-select-image :images="$images" name="image1" currentId="{{ $product->image1 }}"
                                 currentImage="{{ $product->imageFirst->filename ?? '' }}" />

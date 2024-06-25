@@ -55,8 +55,8 @@
                     x-data="{ show: true }"
                     x-show="show"
                     x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
+                    x-init="setTimeout(() => show = false, 3000)"
+                    class="text-base text-red-500"
                 >{{ __('Saved.') }}</p>
             @endif
         </div>

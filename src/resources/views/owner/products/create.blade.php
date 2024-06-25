@@ -14,7 +14,7 @@
                         <div class="lg:w-1/2 md:w-2/3 mx-auto">
                             <div class="p-2">
                                 <div class="relative">
-                                    <label for="shop_id" class="leading-7 text-sm text-black">販売する店舗</label>
+                                    <label for="shop_id" class="leading-7 text-sm text-black">販売する店舗</label><span class="text-xs ml-2 text-red-500">※必須</span>
                                     <select id="shop_id" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" name="shop_id">
                                         @foreach ($shops as $shop)
                                         <option value="{{ $shop->id }}">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="p-2">
                                 <div class="relative">
-                                    <label for="category" class="leading-7 text-sm text-black">カテゴリ</label>
+                                    <label for="category" class="leading-7 text-sm text-black">カテゴリ</label><span class="text-xs ml-2 text-red-500">※必須</span>
                                     <select id="category" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" name="category">
                                         @foreach ($categories as $category)
                                             <optgroup label="{{ $category->name }}">
@@ -41,7 +41,7 @@
                             </div>
                             <div class="p-2">
                                 <div class="relative">
-                                    <label for="name" class="leading-7 text-sm text-black">商品名 ※必須</label>
+                                    <label for="name" class="leading-7 text-sm text-black">商品名</label><span class="text-xs ml-2 text-red-500">※必須</span>
                                     <input type="text" id="name" name="name" value="{{ old('name') }}"
                                         requierd
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
@@ -50,7 +50,7 @@
                             </div>
                             <div class="p-2">
                                 <div class="relative">
-                                    <label for="information" class="leading-7 text-sm text-black">商品情報 ※必須</label>
+                                    <label for="information" class="leading-7 text-sm text-black">商品情報</label><span class="text-xs ml-2 text-red-500">※必須</span>
                                     <textarea id="information" name="information" cols="30" rows="10" requierd
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ $shop->information }}</textarea>
                                     <x-input-error :messages="$errors->get('information')" class="mt-2" />
@@ -58,7 +58,7 @@
                             </div>
                             <div class="p-2">
                                 <div class="relative">
-                                    <label for="price" class="leading-7 text-sm text-black">価格 ※必須</label>
+                                    <label for="price" class="leading-7 text-sm text-black">価格</label><span class="text-xs ml-2 text-red-500">※必須</span>
                                     <input type="number" id="price" name="price" value="{{ old('price') }}"
                                         requierd
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
@@ -67,7 +67,7 @@
                             </div>
                             <div class="p-2">
                                 <div class="relative">
-                                    <label for="quantity" class="leading-7 text-sm text-black">初期在庫数 ※必須</label>
+                                    <label for="quantity" class="leading-7 text-sm text-black">初期在庫数</label><span class="text-xs ml-2 text-red-500">※必須</span>
                                     <input type="number" id="quantity" name="quantity"
                                         value="{{ old('quantity') }}"
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
@@ -79,6 +79,15 @@
                                     <input type="number" id="sort_order" name="sort_order"
                                         value="{{ old('sort_order') }}"
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                </div>
+                            </div>
+                            <div class="p-2 mb-8">
+                                <div class="relative">
+                                    <label for="shipping_time" class="leading-7 text-sm text-black">発送までの期間</label>
+                                    <input type="number" id="shipping_time" name="shipping_time"
+                                        value="{{ old('shipping_time') }}"
+                                        class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                        <span>日</span><span class="text-xs ml-2 text-red-500">※必須</span>
                                 </div>
                             </div>
                             <x-select-image :images="$images" name="image1" />

@@ -53,6 +53,7 @@
                         </div>
                     </div>
                 </form>
+                <p class="p-product__meta-time">発送までの準備期間 : <span>{{ $product->shipping_time }}日</span></p>
             </div>
         </div>
     </div>

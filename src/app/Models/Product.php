@@ -27,6 +27,7 @@ class Product extends Model
         'image2',
         'image3',
         'image4',
+        'shipping_time',
     ];
 
     public function shop()

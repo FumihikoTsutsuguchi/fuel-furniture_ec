@@ -83,6 +83,7 @@ class ProductController extends Controller
                     'sort_order' => $request->sort_order,
                     'shop_id' => $request->shop_id,
                     'secondary_category_id' => $request->category,
+                    'shipping_time' => $request->shipping_time,
                     'image1' => $request->image1,
                     'image2' => $request->image2,
                     'image3' => $request->image3,
@@ -166,6 +167,7 @@ class ProductController extends Controller
                         $product->image2 = $request->image2;
                         $product->image3 = $request->image3;
                         $product->image4 = $request->image4;
+                        $product->shipping_time = $request->shipping_time;
                         $product->is_selling = $request->is_selling;
                         $product->save();
 
