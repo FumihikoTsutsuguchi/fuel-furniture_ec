@@ -7,10 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <x-flash-message status="session('status')" />
-                    @foreach ($shops as $shop)
+            <div class="p-6 text-gray-900">
+                <x-flash-message status="session('status')" />
+                @foreach ($shops as $shop)
                     <div class="max-w-sm p-4">
                         <a href="{{ route('owner.shops.edit', ['shop' => $shop->id]) }}">
                             <div class="border rounded-md p-4">
@@ -21,15 +20,14 @@
                                         <span class="border p-2 rounded-md bg-red-400 text-white">停止中</span>
                                     @endif
                                 </div>
-                                <div class="text-xl">
+                                <div class="text-xl mb-2">
                                     {{ $shop->name }}
                                 </div>
-                                <x-thumbnail :filename="$shop->filename" type="shops"/>
+                                <x-thumbnail :filename="$shop->filename" type="shops" />
                             </div>
                         </a>
                     </div>
-                    @endforeach
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

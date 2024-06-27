@@ -61,7 +61,7 @@ class OwnersController extends Controller
 
                 Shop::create([
                     'owner_id' => $owner->id,
-                    'name' => '店名を入力してください',
+                    'name' => '',
                     'information' => '',
                     'filename' => '',
                     'is_selling' => true,
