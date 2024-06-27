@@ -114,9 +114,13 @@ class CartController extends Controller
         $user = User::findOrFail(Auth::id());
 
         SendThanksMail::dispatch($products, $user);
-        foreach ($products as $product)
-        {
-            SendOrderedMail::dispatch($product,$user);
+
+        $groupProducts = [];
+        foreach ($products as $product) {
+            $groupProducts[] = $product;
+        }
+        foreach ($groupProducts as $ownerProduct) {
+            SendOrderedMail::dispatch($ownerProduct, $user);
         }
 
         Cart::where('user_id', Auth::id())->delete();

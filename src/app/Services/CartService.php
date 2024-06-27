@@ -13,7 +13,7 @@ class CartService
 
         foreach ($items as $item) {
             $p = Product::findOrFail($item->product_id);
-            $owner = $p->shop->owner->select('name', 'email')->first()->toArray();
+            $owner = $p->shop->owner->only(['name', 'email']);
             $values = array_values($owner);
             $keys = ['ownerName', 'email'];
             $ownerInfo = array_combine($keys, $values);

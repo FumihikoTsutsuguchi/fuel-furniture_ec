@@ -14,16 +14,16 @@
                         <div class="lg:w-1/2 md:w-2/3 mx-auto">
                             <div class="p-2">
                                 <div class="relative">
-                                    <label for="name" class="leading-7 text-sm text-gray-600">店名 ※必須</label>
-                                    <input type="text" id="name" name="name" value="{{ $shop->name }}" requierd
+                                    <label for="name" class="leading-7 text-sm text-gray-600">店名</label><span class="text-xs ml-2 text-red-500">※必須</span>
+                                    <input type="text" id="name" name="name" value="{{ $shop->name }}" placeholder="店名を入力してください" requierd
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                 </div>
                             </div>
                             <div class="p-2">
                                 <div class="relative">
-                                    <label for="information" class="leading-7 text-sm text-gray-600">店舗情報 ※必須</label>
-                                    <textarea id="information" name="information" cols="30" rows="10" requierd
+                                    <label for="information" class="leading-7 text-sm text-gray-600">店舗情報</label><span class="text-xs ml-2 text-red-500">※必須</span>
+                                    <textarea id="information" name="information" cols="30" rows="10" requierd placeholder="店舗情報を入力してください"
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ $shop->information }}</textarea>
                                     <x-input-error :messages="$errors->get('information')" class="mt-2" />
                                 </div>
