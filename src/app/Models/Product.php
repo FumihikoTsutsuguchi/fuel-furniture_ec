@@ -10,6 +10,7 @@ use App\Models\Image;
 use App\Models\Stock;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
@@ -40,7 +41,7 @@ class Product extends Model
         return $this->belongsTo(SecondaryCategory::class,'secondary_category_id');
     }
 
-    public function imageFirst()
+    public function imageFirst(): BelongsTo
     {
         return $this->belongsTo(Image::class,'image1','id');
     }
