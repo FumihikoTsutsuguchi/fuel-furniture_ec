@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Models\Shop;
 use App\Models\Image;
+use App\Notifications\OwnerResetPassword;
+use Illuminate\Notifications\Notifiable;
 
 class Owner extends Authenticatable
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,SoftDeletes, Notifiable;
 
         /**
      * The attributes that are mass assignable.
@@ -53,5 +55,9 @@ class Owner extends Authenticatable
     public function image()
     {
         return $this->hasMany(Image::class);
+    }
+
+    public function sendPasswordResetNotification($token){
+        $this->notify(new OwnerResetPassword($token));
     }
 }

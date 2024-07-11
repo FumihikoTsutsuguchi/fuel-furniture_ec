@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Product;
+use App\Notifications\UserResetPassword;
 
 class User extends Authenticatable
 {
@@ -52,4 +53,8 @@ class User extends Authenticatable
     ->withPivot(['id', 'quantity']);
     }
 
+    public function sendPasswordResetNotification($token){
+        $this->notify(new UserResetPassword($token));
+    }
+    
 }
