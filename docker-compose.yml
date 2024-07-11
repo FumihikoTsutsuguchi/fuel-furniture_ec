@@ -20,6 +20,12 @@ services:
       - 3000:3306
     volumes:
       - db-store:/var/lib/mysql
+  mail:
+    image: axllent/mailpit:v1.8
+    container_name: mailpit
+    ports:
+      - 8025:8025
+      - 1025:1025
 
 volumes:
   db-store:
