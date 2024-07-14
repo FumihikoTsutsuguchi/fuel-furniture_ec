@@ -9,6 +9,8 @@ use App\Models\SecondaryCategory;
 use App\Models\Image;
 use App\Models\Stock;
 use App\Models\User;
+use App\Models\Color;
+use App\Models\Size;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -70,6 +72,16 @@ class Product extends Model
     {
         return $this->belongsToMany(User::class, 'carts')
         ->withPivot(['id', 'quantity']);
+    }
+
+    public function color()
+    {
+        return $this->belongsTo(Color::class,'color','id');
+    }
+
+    public function size()
+    {
+        return $this->belongsTo(Size::class,'size','id');
     }
 
     public function scopeAvailableItems($query)

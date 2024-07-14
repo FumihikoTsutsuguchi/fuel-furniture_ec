@@ -11,6 +11,9 @@
     if ($name === 'image4') {
         $modal = 'modal-4';
     }
+    if ($name === 'color') {
+        $modal = 'color';
+    }
 
     $cImage = $currentImage ?? '';
     $cId = $currentId ?? '';

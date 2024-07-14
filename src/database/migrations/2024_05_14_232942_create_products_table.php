@@ -37,6 +37,12 @@ return new class extends Migration
             ->nullable()
             ->constrained('images');
             $table->unsignedInteger('shipping_time');
+            $table->foreignId('color_id')
+            ->nullable()
+            ->constrained();
+            $table->foreignId('size_id')
+            ->nullable()
+            ->constrained();
             $table->timestamps();
         });
     }

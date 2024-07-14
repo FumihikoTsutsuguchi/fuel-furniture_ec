@@ -29,8 +29,10 @@ class DatabaseSeeder extends Seeder
             // ProductSeeder::class,
             // StockSeeder::class,
             UserSeeder::class,
+            ColorSeeder::class,
+            SizeSeeder::class,
         ]);
         // Product::factory(100)->create();
-        Stock::factory(100)->create();
+        Stock::factory(30)->create();
     }
 }
