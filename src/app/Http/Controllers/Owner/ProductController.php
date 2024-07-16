@@ -12,6 +12,8 @@ use App\Models\Stock;
 use App\Models\Product;
 use App\Models\PrimaryCategory;
 use App\Models\Owner;
+use App\Models\Color;
+use App\Models\Size;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 use Illuminate\Support\Facades\Log;
@@ -66,7 +68,14 @@ class ProductController extends Controller
         $categories = PrimaryCategory::with('secondary')
         ->get();
 
-        return view('owner.products.create', compact('shops', 'images', 'categories'));
+        $colors = Color::where('owner_id', Auth::id())
+        ->select('id', 'name', 'filename')
+        ->orderBy('updated_at', 'desc')
+        ->get();
+
+
+
+        return view('owner.products.create', compact('shops', 'images', 'categories', 'colors'));
     }
 
     /**
@@ -74,6 +83,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        // dd($request);
         try {
             DB::transaction(function () use($request) {
                 $product = Product::create([
@@ -89,6 +99,8 @@ class ProductController extends Controller
                     'image3' => $request->image3,
                     'image4' => $request->image4,
                     'is_selling' => $request->is_selling,
+                    'size_id' => $request->size,
+                    'color_id' => $request->color,
                 ]);
 
                 Stock::create([
@@ -128,11 +140,20 @@ class ProductController extends Controller
         ->orderBy('updated_at', 'desc')
         ->get();
 
+        $colors = Color::where('owner_id', Auth::id())
+        ->select('id', 'name', 'filename')
+        ->orderBy('updated_at', 'desc')
+        ->get();
+
+
+
         $categories = PrimaryCategory::with('secondary')
         ->get();
 
+        // dd($colors);
         return view('owner.products.edit',
-        compact('product', 'quantity', 'shops', 'images', 'categories'));
+        compact('product', 'quantity', 'shops', 'images', 'categories', 'colors'));
+
 
     }
 

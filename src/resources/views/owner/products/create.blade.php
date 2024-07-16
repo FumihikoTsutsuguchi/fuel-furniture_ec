@@ -77,6 +77,7 @@
                                     class="text-xs ml-2 text-red-500">※必須</span>
                                 <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}"
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <x-input-error :messages="$errors->get('quantity')" class="mt-2" />
                             </div>
                         </div>
                         <div class="p-2">
@@ -91,31 +92,27 @@
                                 <label for="size" class="leading-7 text-sm text-black">サイズ</label>
                                 <select name="size" id="size" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                     <option value="">指定なし</option>
-                                    <option value="{{ old('size') }}">S</option>
-                                    <option value="{{ old('size') }}">M</option>
-                                    <option value="{{ old('size') }}">L</option>
+                                    <option value="{{ \Constant::PRODUCT_SIZE['small'] }}" {{ old('size') ? 'selected' : '' }}>S</option>
+                                    <option value="{{ \Constant::PRODUCT_SIZE['medium'] }}" {{ old('size') ? 'selected' : '' }}>M</option>
+                                    <option value="{{ \Constant::PRODUCT_SIZE['large'] }}" {{ old('size') ? 'selected' : '' }}>L</option>
                                 </select>
                             </div>
                         </div>
                         <div class="p-2">
                             <div class="relative">
                                 <div>
-                                    <label for="color" class="leading-7 text-sm text-black block">カラー名</label>
-                                    <input type="number" id="color" name="color" value="{{ old('color') }}"
-                                        class="w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                </div>
-                                <div>
-                                    <x-select-image :images="$images" name="color" />
+                                    <x-select-color :colors="$colors" name="color" />
                                 </div>
                             </div>
                         </div>
                         <div class="p-2 mb-8">
                             <div class="relative">
                                 <label for="shipping_time" class="leading-7 text-sm text-black block">発送までの期間</label>
-                                <input type="number" id="shipping_time" name="shipping_time"
+                                <input type="number" id="shipping_time" name="shipping_time" requierd
                                     value="{{ old('shipping_time') }}"
                                     class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                <span>日</span><span class="text-xs ml-2 text-red-500">※必須</span>
+                                    <span>日</span><span class="text-xs ml-2 text-red-500">※必須</span>
+                                    <x-input-error :messages="$errors->get('shipping_time')" class="mt-2" />
                             </div>
                         </div>
                         <x-select-image :images="$images" name="image1" />
@@ -149,11 +146,17 @@
         const images = document.querySelectorAll('.image')
         images.forEach(image => {
             image.addEventListener('click', function(e) {
-                const imageName = e.target.dataset.id.substr(0, 6)
+                const imageName = e.target.dataset.id.split('_').slice(0, -1).join('_');
                 const imageId = e.target.dataset.id.replace(imageName + '_', '')
                 const imageFile = e.target.dataset.file
-                const imagePath = 'https://cf.fuel-furniture.com/products/'
+                const imageDirectory = e.target.dataset.directory
+                const imagePath = `https://cf.fuel-furniture.com/${imageDirectory}/`
                 const modal = e.target.dataset.modal
+
+                if (e.target.dataset.color) {
+                    const colorName = e.target.dataset.color
+                    document.getElementById(imageName + '_title').textContent = colorName
+                }
 
                 document.getElementById(imageName + '_thumbnail').src = imagePath + imageFile
                 document.getElementById(imageName + '_hidden').value = imageId

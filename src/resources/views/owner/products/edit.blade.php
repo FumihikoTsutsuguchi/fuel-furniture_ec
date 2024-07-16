@@ -116,6 +116,24 @@
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
+                        <div class="p-2">
+                            <div class="relative">
+                                <label for="size" class="leading-7 text-sm text-black">サイズ</label>
+                                <select name="size" id="size" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <option value="">指定なし</option>
+                                    <option value="{{ \Constant::PRODUCT_SIZE['small'] }}" {{ old('size') ? 'selected' : '' }} {{ $product->size && $product->size->id == \Constant::PRODUCT_SIZE['small'] ? 'selected' : ''}}>S</option>
+                                    <option value="{{ \Constant::PRODUCT_SIZE['medium'] }}" {{ old('size') ? 'selected' : '' }} {{$product->size && $product->size->id == \Constant::PRODUCT_SIZE['medium'] ? 'selected' : ''}}>M</option>
+                                    <option value="{{ \Constant::PRODUCT_SIZE['large'] }}" {{ old('size') ? 'selected' : '' }} {{$product->size && $product->size->id == \Constant::PRODUCT_SIZE['large'] ? 'selected' : ''}}>L</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <div class="relative">
+                                <div>
+                                    <x-select-color :colors="$colors" name="color" currentId="{{ $product->color_id }}" currentColor="{{ $product->color->filename ?? '' }}" />
+                                </div>
+                            </div>
+                        </div>
                         <div class="p-2 mb-8">
                             <div class="relative">
                                 <label for="shipping_time" class="leading-7 text-sm text-black">発送までの期間</label>
@@ -127,7 +145,6 @@
                                     class="text-xs ml-2 text-red-500">※必須</span>
                             </div>
                         </div>
-
                         <x-select-image :images="$images" name="image1" currentId="{{ $product->image1 }}"
                             currentImage="{{ $product->imageFirst->filename ?? '' }}" />
                         <x-select-image :images="$images" name="image2" currentId="{{ $product->image2 }}"
@@ -174,11 +191,17 @@
         const images = document.querySelectorAll('.image')
         images.forEach(image => {
             image.addEventListener('click', function(e) {
-                const imageName = e.target.dataset.id.substr(0, 6)
+                const imageName = e.target.dataset.id.split('_').slice(0, -1).join('_');
                 const imageId = e.target.dataset.id.replace(imageName + '_', '')
                 const imageFile = e.target.dataset.file
-                const imagePath = 'https://cf.fuel-furniture.com/products/'
+                const imageDirectory = e.target.dataset.directory
+                const imagePath = `https://cf.fuel-furniture.com/${imageDirectory}/`
                 const modal = e.target.dataset.modal
+
+                if (e.target.dataset.color) {
+                    const colorName = e.target.dataset.color
+                    document.getElementById(imageName + '_title').textContent = colorName
+                }
 
                 document.getElementById(imageName + '_thumbnail').src = imagePath + imageFile
                 document.getElementById(imageName + '_hidden').value = imageId

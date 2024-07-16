@@ -23,7 +23,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:50'],
-            'information' => ['required', 'string', 'max:1000'],
+            'information' => ['required', 'string', 'max:3000'],
             'price' => ['required', 'integer', 'min:0'],
             'sort_order' => ['nullable', 'integer'],
             'quantity' => ['required', 'integer', 'min:0'],
@@ -34,6 +34,7 @@ class ProductRequest extends FormRequest
             'image3' => ['nullable', 'exists:images,id'],
             'image4' => ['nullable', 'exists:images,id'],
             'is_selling' => ['required', 'boolean'],
+            'shipping_time' => ['required', 'integer'],
         ];
     }
 }

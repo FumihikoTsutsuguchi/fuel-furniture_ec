@@ -141,10 +141,10 @@ class ImageController extends Controller
             });
         }
 
-        $filePath = 'public/products/' . $image->filename;
+        $filePath = 'products/' . $image->filename;
 
-        if (Storage::exists($filePath)) {
-            Storage::delete($filePath);
+        if (Storage::disk('s3')->exists($filePath)) {
+            Storage::disk('s3')->delete($filePath);
         }
 
         Image::findOrFail($id)->delete();

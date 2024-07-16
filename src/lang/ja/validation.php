@@ -256,6 +256,8 @@ return [
         'username' => 'ユーザー名',
         'year' => '年',
         'information' => '商品情報',
+        'quantity' => '初期在庫',
+        'shipping_time' => '発送までの期間',
     ],
 
 ];

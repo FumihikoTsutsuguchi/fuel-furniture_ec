@@ -15,15 +15,18 @@ class ColorSeeder extends Seeder
     {
         DB::table('colors')->insert([
             [
-                'name' => 'red',
+                'owner_id' => 1,
+                'name' => 'shockingPink',
                 'filename' => 'color1.jpg',
             ],
             [
-                'name' => 'blue',
+                'owner_id' => 1,
+                'name' => 'Pink',
                 'filename' => 'color2.jpg',
             ],
             [
-                'name' => 'yellow',
+                'owner_id' => 1,
+                'name' => 'lime',
                 'filename' => 'color3.jpg',
             ],
         ]);

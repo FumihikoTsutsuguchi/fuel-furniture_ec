@@ -1,22 +1,15 @@
 @php
-    if ($name === 'image1') {
-        $modal = 'modal-1';
-    }
-    if ($name === 'image2') {
-        $modal = 'modal-2';
-    }
-    if ($name === 'image3') {
-        $modal = 'modal-3';
-    }
-    if ($name === 'image4') {
-        $modal = 'modal-4';
+
+    if ($name === 'color') {
+        $modal = 'modal-color';
     }
 
-    $cImage = $currentImage ?? '';
+    $cColor = $currentColor ?? '';
     $cId = $currentId ?? '';
+
 @endphp
 
-<label for="{{ $name }}" class="leading-7 text-sm text-black">商品画像</label>
+<label for="{{ $name }}" class="leading-7 text-sm text-black">カラー</label>
 <div class="modal micromodal-slide" id="{{ $modal }}" aria-hidden="true">
     <div class="modal__overlay z-50" tabindex="-1" data-micromodal-close>
         <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="{{ $modal }}-title">
@@ -28,14 +21,14 @@
             </header>
             <main class="modal__content" id="{{ $modal }}-content">
                 <div class="flex flex-wrap">
-                    @foreach ($images as $image)
+                    @foreach ($colors as $color)
                         <div class="w-1/4 p-2 md:p-4">
                             <div class="c-product-image">
-                                <img class="image" data-id="{{ $name }}_{{ $image->id }}" data-directory="products"
-                                    data-file="{{ $image->filename }}" data-path="{{ asset('storage/products/') }}"
+                                <img class="image" data-id="{{ $name }}_{{ $color->id }}" data-directory="colors" data-color="{{ $color->name }}"
+                                    data-file="{{ $color->filename }}" data-path="{{ asset('storage/products/') }}"
                                     data-modal="{{ $modal }}"
-                                    src="{{ asset('https://cf.fuel-furniture.com/products/' . $image->filename) }}">
-                                <div class="text-gray-700">{{ $image->title }}</div>
+                                    src="{{ asset('https://cf.fuel-furniture.com/colors/' . $color->filename) }}">
+                                <div class="text-gray-700">{{ $color->name }}</div>
                             </div>
                         </div>
                     @endforeach
@@ -51,8 +44,9 @@
 
 <div class="flex justify-between items-center mb-5">
     <a class="py-2 px-4 bg-gray-300 rounded" data-micromodal-trigger="{{ $modal }}" href='javascript:;'>画像ファイル選択</a>
-    <div class="{{ $cImage ? 'c-product-image' : '' }}">
-        <img id="{{ $name }}_thumbnail" src="{{ $cImage ? asset('https://cf.fuel-furniture.com/products/' . $cImage) : '' }}">
+    <div class="{{ $cColor ? 'c-product-image' : '' }}">
+        <img id="{{ $name }}_thumbnail" src="{{ $cColor ? asset('https://cf.fuel-furniture.com/colors/' . $cColor) : '' }}">
+        <span id="{{ $name }}_title"></span>
     </div>
 </div>
 <input id="{{ $name }}_hidden" type="hidden" name="{{ $name }}" value="{{ $cId }}">

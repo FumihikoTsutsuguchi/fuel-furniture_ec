@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Models\Shop;
 use App\Models\Image;
+use App\Models\Color;
 use App\Notifications\OwnerResetPassword;
 use Illuminate\Notifications\Notifiable;
 
@@ -55,6 +56,11 @@ class Owner extends Authenticatable
     public function image()
     {
         return $this->hasMany(Image::class);
+    }
+
+    public function color()
+    {
+        return $this->hasMany(Color::class);
     }
 
     public function sendPasswordResetNotification($token){

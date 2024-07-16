@@ -7,6 +7,9 @@
     if ($type === 'products') {
         $path = 'products/';
     }
+    if ($type === 'colors') {
+        $path = 'colors/';
+    }
 
 @endphp
 

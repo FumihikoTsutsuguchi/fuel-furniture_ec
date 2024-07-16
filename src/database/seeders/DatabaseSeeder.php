@@ -25,12 +25,12 @@ class DatabaseSeeder extends Seeder
             OwnerSeeder::class,
             ShopSeeder::class,
             ImageSeeder::class,
+            ColorSeeder::class,
+            SizeSeeder::class,
             CategorySeeder::class,
             // ProductSeeder::class,
             // StockSeeder::class,
             UserSeeder::class,
-            ColorSeeder::class,
-            SizeSeeder::class,
         ]);
         // Product::factory(100)->create();
         Stock::factory(30)->create();

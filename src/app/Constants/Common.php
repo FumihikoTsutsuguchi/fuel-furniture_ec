@@ -25,4 +25,13 @@ class Common
         'older' => self::ORDER_OLDER
     ];
 
+    const SIZE_SMALL = '1';
+    const SIZE_MEDIUM = '2';
+    const SIZE_LARGE = '3';
+    const PRODUCT_SIZE = [
+        'small' => self::SIZE_SMALL,
+        'medium' => self::SIZE_MEDIUM,
+        'large' => self::SIZE_LARGE
+    ];
+
 }

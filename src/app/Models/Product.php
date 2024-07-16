@@ -31,6 +31,8 @@ class Product extends Model
         'image3',
         'image4',
         'shipping_time',
+        'size_id',
+        'color_id',
     ];
 
     public function shop()
@@ -76,12 +78,12 @@ class Product extends Model
 
     public function color()
     {
-        return $this->belongsTo(Color::class,'color','id');
+        return $this->belongsTo(Color::class,'color_id','id');
     }
 
     public function size()
     {
-        return $this->belongsTo(Size::class,'size','id');
+        return $this->belongsTo(Size::class,'size_id','id');
     }
 
     public function scopeAvailableItems($query)
