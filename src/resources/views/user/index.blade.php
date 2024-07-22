@@ -1,9 +1,9 @@
 <x-app-layout>
     <div class="swiper swiper__mv">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="{{ asset('/images/mv_1.jpg') }}" alt=""></div>
-            <div class="swiper-slide"><img src="{{ asset('/images/mv_2.jpg') }}" alt=""></div>
-            <div class="swiper-slide"><img src="{{ asset('/images/mv_3.jpg') }}" alt=""></div>
+            <div class="swiper-slide"><img src="{{ asset('/images/mv_1.jpg') }}" alt=""><p>FUEL-Furniture</p></div>
+            <div class="swiper-slide"><img src="{{ asset('/images/mv_2.jpg') }}" alt=""><p>FUEL-Furniture</p></div>
+            <div class="swiper-slide"><img src="{{ asset('/images/mv_3.jpg') }}" alt=""><p>FUEL-Furniture</p></div>
         </div>
         <div class="swiper-pagination"></div>
     </div>
