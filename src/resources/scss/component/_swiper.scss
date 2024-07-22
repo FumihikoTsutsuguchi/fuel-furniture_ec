@@ -46,6 +46,7 @@
 
 .swiper__mv {
     & .swiper-slide {
+        position: relative;
         img {
             min-height: 80vh;
             max-height: 80vh;
@@ -57,5 +58,41 @@
                 max-height: 40vh;
             }
         }
+        p {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: fit-content;
+            height: fit-content;
+            color: $white;
+            font-family: $ff-title;
+            font-weight: 400;
+            font-size: 28px;
+            opacity: 0;
+            @include mq(tl_l) {
+                font-size: 20px;
+            }
+            @include mq(sp) {
+                font-size: 16px;
+            }
+        }
+        &.swiper-slide-active {
+            p {
+                animation-delay: 0.2s;
+                animation-duration: 0.5s;
+                animation-fill-mode: both;
+                animation-name: fadeIn;
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
 }
