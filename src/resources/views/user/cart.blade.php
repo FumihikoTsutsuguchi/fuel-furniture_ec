@@ -11,10 +11,10 @@
                 @if (count($products) > 0)
                     @foreach ($products as $product)
                         <div class="md:flex md:items-center mb-2">
-                            <div class="md:w-3/12">
+                            <div class="md:w-2/12">
                                 <x-thumbnail filename="{{ $product->imageFirst->filename ?? '' }}" type="products" />
                             </div>
-                            <div class="md:w-4/12">{{ $product->name }}</div>
+                            <div class="md:w-4/12 md:ml-4">{{ $product->name }}</div>
                             <div class="md:w-3/12">
                                 <div>{{ $product->pivot->quantity }} 個</div>
                                 <div>{{ number_format($product->pivot->quantity * $product->price) }}円(税込)</div>
@@ -36,11 +36,11 @@
                         </div>
                     @endforeach
                     <div class="my-2">
-                        小計: {{ number_format($totalPrice) }}<span class="text-sm text-gray-700">円(税込)</span>
+                        合計: {{ number_format($totalPrice) }}<span class="text-sm text-gray-700">円(税込)</span>
                     </div>
                     <div>
                         <button onclick="location.href='{{ route('user.cart.checkout') }}'"
-                            class="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">購入する</button>
+                            class="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded mt-4">購入する</button>
                     </div>
                 @else
                     カートに商品が入っていません。
