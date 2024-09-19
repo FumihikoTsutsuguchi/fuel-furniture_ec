@@ -41,7 +41,7 @@
   * Simple Notification Service
   * Amazon Simple Email Service
 ## ER 図
-![image](https://github.com/user-attachments/assets/f38e4836-1d55-49f8-ac65-350d94e67a34)
+![image](https://github.com/user-attachments/assets/00d1d20b-ed73-40f9-a07d-a7c7087fb12a)
 
 
 ## インフラ構成図
