@@ -41,7 +41,8 @@
   * Simple Notification Service
   * Amazon Simple Email Service
 ## ER 図
-![nLNDQXin4BxhAKGkFVdGdrC98ILG23sqK7fUbDLuBI9frD5iNMFdtIjfLRgELmHiIYxsw9lHp3S_chsDh8X7P-Lw1DkjH_A6HmBnHcwC1iaRa34WYtBg3VKMH5AgNsYq38GF5boKMyCRgVnWGSkUS1lb6e15V3G-A59EMkE1Tm4a4czG206U3U_arTUj1xgIAieYoRsGCdd-A1_CO3odqsgLVhnoaC24m02K073As8H49kE7](https://github.com/FumihikoTsutsuguchi/fuel-furniture_ec/assets/115400802/c05275e9-59f5-4ea9-9c46-942bfa2decee)
+![image](https://github.com/user-attachments/assets/f38e4836-1d55-49f8-ac65-350d94e67a34)
+
 
 ## インフラ構成図
 ![aws drawio (2)](https://github.com/FumihikoTsutsuguchi/fuel-furniture_ec/assets/115400802/418ab233-6f5d-41fb-afc1-ae3a24127ddc)
