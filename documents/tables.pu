@@ -117,7 +117,7 @@ Owner ||--|| Shop
 Owner ||--|{ Image
 Shop ||--|{ Product
 Product }|--|| Image
-Product ||--o| Stock
+Product ||--|{ Stock
 Product }|--o{ Cart
 Product }|--|| SecondaryCategory
 SecondaryCategory }|--|| PrimaryCategory
